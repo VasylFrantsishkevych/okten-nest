@@ -9,7 +9,13 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
+
 import { PostsService } from './posts.service';
 import { CreatePostDto, UpdatePostDto } from './dto';
 
@@ -30,6 +36,7 @@ export class PostsController {
       },
     },
   })
+  @ApiNotFoundResponse({ description: 'No found posts' })
   @HttpCode(HttpStatus.OK)
   @Get('/')
   getAll() {
@@ -48,6 +55,7 @@ export class PostsController {
       },
     },
   })
+  @ApiNotFoundResponse({ description: 'No found post for ID' })
   @HttpCode(HttpStatus.OK)
   @Get('/:id')
   getOneById(@Param('id') id: string) {
