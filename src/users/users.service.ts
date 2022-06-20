@@ -17,6 +17,12 @@ export class UsersService {
     });
   }
 
+  getUserByEmail(email: string): Promise<User> {
+    return this.prismaService.user.findUnique({
+      where: { email: email },
+    });
+  }
+
   // getOneById(userId: string): Promise<User> {
   //   return this.prismaService.user.findUnique({
   //     where: { id: Number(userId) },

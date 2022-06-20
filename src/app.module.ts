@@ -4,11 +4,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
-import { CommentsController } from './comments/comments.controller';
 import { CommentsModule } from './comments/comments.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [UsersModule, PostsModule, CommentsModule],
+  imports: [UsersModule, PostsModule, CommentsModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
